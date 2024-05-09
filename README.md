@@ -1,5 +1,8 @@
 # PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24
-
+<h3>Name:SOUVIK KUNDU</h3>
+<h3>Reg.No:212221230105</h3>
+<h3>Ex.No:06</h3>
+<h3>Date:06/05/24</h3>
 <h1> <align=center> MATRIX TRANSPOSITION USING SHARED MEMORY </h3>
   Implement Matrix transposition using GPU Shared memory.</h3>
 
@@ -57,10 +60,8 @@ Google Colab with NVCC Compiler
 16. End of Algorithm
 
 ## PROGRAM:
-~~~python
-!pip install git+https://github.com/andreinechaev/nvcc4jupyter.git
-%load_ext nvcc4jupyter
-%%writefile mattran.cu
+```
+%%cuda
 #include <stdio.h>
 #include <cuda_runtime.h>
 #include <cuda.h>
@@ -143,7 +144,6 @@ inline double seconds()
 #define BDIMX 16
 #define BDIMY 16
 #define IPAD  2
-
 void printData(char *msg, int *in,  const int size)
 {
     printf("%s: ", msg);
@@ -393,18 +393,11 @@ CHECK(cudaMemset(d_C, 0, nBytes));
     CHECK(cudaDeviceReset());
     return EXIT_SUCCESS;
 }
-!nvcc -o mattran mattran.cu
-!./mattran
-!nvprof ./mattran
-!nvprof --print-gpu-trace ./mattran
-~~~
+```
 
 ## OUTPUT:
-![image](https://github.com/LakshmanAdhireddy/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/118707265/24ec12e2-1bb4-4ff9-9247-6c8001bdbb9c)
-![image](https://github.com/LakshmanAdhireddy/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/118707265/babce5f5-92a0-4257-b63f-03e973aa911c)
-![image](https://github.com/LakshmanAdhireddy/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/118707265/421ce81d-3bfc-403b-ab59-7f822424b17e)
-![image](https://github.com/LakshmanAdhireddy/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/118707265/1dab672a-0272-4b76-9ab5-2765e91b37ef)
+![Screenshot 2024-05-06 111734](https://github.com/21002986/PCA-EXP-6-MATRIX-TRANSPOSITION-USING-SHARED-MEMORY-AY-23-24/assets/112633513/a0c1abde-c18d-4ab1-8554-12415666c9ee)
 
 
 ## RESULT:
-Thus the program has been executed by using CUDA to transpose a matrix. It is observed that there are variations shared memory and global memory implementation. The elapsed times are recorded as 1.6950.
+The Matrix transposition on shared memory with grid (1,1) block (16,16) is demonstrated successfully.
